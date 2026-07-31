@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mapping the Cancer Research Attention Gap — A Data-Driven Screening Framework</title>
+<meta name="description" content="A data-driven screening framework comparing cancer research attention with disease burden across sixteen major cancer types, 2019–2023.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<header class="nav" id="top">
+  <div class="nav-inner">
+    <a class="nav-brand" href="#top">
+      <span class="nav-brand-mark" aria-hidden="true"></span>
+      Attention&nbsp;Gap
+    </a>
+    <nav class="nav-links" aria-label="Section navigation">
+      <a href="#methodology">Method</a>
+      <a href="#findings">Findings</a>
+      <a href="#charts">Charts</a>
+      <a href="#recommendations">Recommendations</a>
+      <a href="#supporting">Supporting Analyses</a>
+    </nav>
+    <a class="nav-repo" href="https://github.com/phoenixcoder26/cancer-research-attention-gap" target="_blank" rel="noopener">
+      <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+      GitHub
+    </a>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <canvas id="cell-canvas" aria-hidden="true"></canvas>
+  <div class="hero-inner">
+    <p class="eyebrow">Research &amp; Funding Strategy Proposal · Columbia University, APANPS5205</p>
+    <h1 class="hero-title">Mapping the Cancer<br>Research Attention Gap</h1>
+    <p class="hero-sub">A data-driven screening framework comparing cancer research attention with disease burden across sixteen major cancer types, 2019–2023.</p>
+
+    <div class="question-card">
+      <span class="question-label">Research Question</span>
+      <p class="question-text">Are cancer research resources aligned with the burden of disease?</p>
+    </div>
+
+    <div class="hero-cta">
+      <a href="#methodology" class="btn btn-primary">View Analysis</a>
+      <a href="#charts" class="btn btn-ghost">View Charts</a>
+      <a href="#recommendations" class="btn btn-ghost">View Recommendations</a>
+      <a href="https://github.com/phoenixcoder26/cancer-research-attention-gap" class="btn btn-ghost" target="_blank" rel="noopener">GitHub Repo ↗</a>
+    </div>
+  </div>
+  <div class="hero-scroll-cue" aria-hidden="true"><span></span></div>
+</section>
+
+<!-- ================= SNAPSHOT ================= -->
+<section class="snapshot" id="snapshot">
+  <div class="section-inner">
+    <div class="snapshot-grid">
+
+      <div class="metric-card">
+        <span class="metric-value">16</span>
+        <span class="metric-label">Cancer Types</span>
+      </div>
+
+      <div class="metric-card">
+        <span class="metric-value">2019–23</span>
+        <span class="metric-label">Study Window</span>
+      </div>
+
+      <div class="metric-card">
+        <span class="metric-value">80</span>
+        <span class="metric-label">Cancer-Year Observations</span>
+      </div>
+
+      <div class="metric-card metric-card--wide">
+        <span class="metric-value metric-value--small">Composite Attention&nbsp;Gap Score</span>
+        <span class="metric-label">Central Prioritization Metric</span>
+      </div>
+
+      <div class="metric-card">
+        <span class="metric-value metric-value--small">K-Means<br>Clustering</span>
+        <span class="metric-label">Corroborating Method</span>
+      </div>
+
+      <div class="metric-card">
+        <span class="metric-value metric-value--small">TF-IDF Text<br>Analysis</span>
+        <span class="metric-label">Thematic Context</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= WHY THIS MATTERS ================= -->
+<section class="why" id="why">
+  <div class="section-inner why-grid">
+    <div class="why-copy">
+      <span class="section-eyebrow">Why This Matters</span>
+      <h2>Attention doesn't always track burden.</h2>
+      <p>Biomedical research attention does not always move in proportion to disease burden. When that drift goes unnoticed, cancer types with substantial unmet need can receive less scrutiny than their population impact would warrant.</p>
+      <p>Funding agencies and research strategy teams need a transparent, reproducible way to see where that gap is largest — so that limited expert review capacity is pointed at the right questions first.</p>
+    </div>
+    <div class="why-aside">
+      <div class="why-quote">
+        <p>“A cancer type can appear well-represented in the literature while still showing a meaningful proportionality gap once that activity is weighed against its burden.”</p>
+        <span>— Project Executive Summary</span>
+      </div>
+      <div class="why-cell-motif" aria-hidden="true">
+        <div class="cell cell-a"></div>
+        <div class="cell cell-b"></div>
+        <div class="cell cell-c"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= METHODOLOGY ================= -->
+<section class="methodology" id="methodology">
+  <div class="section-inner">
+    <span class="section-eyebrow section-eyebrow--light">Methodology</span>
+    <h2 class="section-title section-title--light">One score, three burden signals, two attention signals.</h2>
+
+    <div class="formula-card">
+      <div class="formula-row">
+        <div class="formula-term">
+          <span class="formula-term-label">Burden Score</span>
+          <span class="formula-term-detail">Incidence · Mortality · Low 5-yr survival</span>
+        </div>
+        <span class="formula-op">−</span>
+        <div class="formula-term">
+          <span class="formula-term-label">Attention Score</span>
+          <span class="formula-term-detail">Publications · Clinical trials</span>
+        </div>
+        <span class="formula-op">=</span>
+        <div class="formula-term formula-term--result">
+          <span class="formula-term-label">Attention Gap Score</span>
+          <span class="formula-term-detail">Positive → burden exceeds attention</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="method-grid">
+      <div class="method-card">
+        <div class="method-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.35-9.5-8.5C.5 8.5 2.5 4 7 4c2 0 3.5 1.2 5 3 1.5-1.8 3-3 5-3 4.5 0 6.5 4.5 4.5 8.5C19 16.65 12 21 12 21Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Burden Score</h3>
+        <p>Percentile rank of incidence rate, mortality rate, and (1 − five-year relative survival), averaged per cancer type from SEER Cancer Stat Facts.</p>
+      </div>
+      <div class="method-card">
+        <div class="method-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M9 2v6L4 19a1.5 1.5 0 0 0 1.4 2h13.2a1.5 1.5 0 0 0 1.4-2L15 8V2M9 2h6M7 15h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Attention Score</h3>
+        <p>Percentile rank of PubMed publication counts and ClinicalTrials.gov registered trial counts, summed across 2019–2023 per cancer type.</p>
+      </div>
+      <div class="method-card">
+        <div class="method-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M4 19h16M7 19V9m5 10V4m5 15v-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Percentile-Rank Normalization</h3>
+        <p>Every variable is converted to its rank position (0–1) among the sixteen cancer types before scoring — this keeps incidence, mortality, and publication counts fairly comparable despite very different underlying scales.</p>
+      </div>
+    </div>
+
+    <div class="method-supporting-note">
+      <span class="note-tag">Robustness checks</span>
+      <p>The composite score is stress-tested through component-level decomposition, correlation analysis between publications and trials, K-means clustering (k = 3), and supplementary TF-IDF theme exploration — detailed in <a href="#supporting">Supporting Analyses</a>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= KEY FINDINGS ================= -->
+<section class="findings" id="findings">
+  <div class="section-inner">
+    <span class="section-eyebrow">Key Findings</span>
+    <h2 class="section-title">Where burden outpaces measured attention.</h2>
+    <p class="section-lede">A positive score does not mean a cancer is definitely underfunded — it means the burden appears higher than measured research attention, and deserves closer review. These four cancer types show the clearest signal.</p>
+
+    <div class="findings-grid">
+
+      <article class="finding-card">
+        <div class="finding-rank">01</div>
+        <div class="finding-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M9.5 3a4 4 0 0 0-3.9 3.1A3.5 3.5 0 0 0 4 9.3a3.5 3.5 0 0 0 .6 6.4A4 4 0 0 0 8.5 21h1a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1h-0Zm5 0a4 4 0 0 1 3.9 3.1A3.5 3.5 0 0 1 20 9.3a3.5 3.5 0 0 1-.6 6.4A4 4 0 0 1 15.5 21h-1a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h0Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        </div>
+        <span class="finding-tag finding-tag--high">High review priority</span>
+        <h3>Brain Cancer</h3>
+        <span class="finding-score">+0.33</span>
+        <p>The largest positive gap of all sixteen cancer types. Severity-driven — the signal is concentrated in mortality and survival rather than incidence.</p>
+      </article>
+
+      <article class="finding-card">
+        <div class="finding-rank">02</div>
+        <div class="finding-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M3 9 12 4l9 5-9 5-9-5Zm0 6 9 5 9-5M3 12l9 5 9-5" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"/></svg>
+        </div>
+        <span class="finding-tag finding-tag--high">High review priority</span>
+        <h3>Non-Hodgkin Lymphoma</h3>
+        <span class="finding-score">+0.29</span>
+        <p>The most consistently validated signal — positive across incidence, mortality, and survival components alike, not just one dimension.</p>
+      </article>
+
+      <article class="finding-card">
+        <div class="finding-rank">03</div>
+        <div class="finding-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="9" cy="7" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="17" cy="8" r="2.4" stroke="currentColor" stroke-width="1.5"/><path d="M15.5 20c.3-2.6 2.3-4.6 4.9-4.9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <span class="finding-tag finding-tag--medium">Medium review priority</span>
+        <h3>Prostate Cancer</h3>
+        <span class="finding-score">+0.18</span>
+        <p>Volume-driven — a large affected population and strong five-year survival, rather than an especially severe burden profile.</p>
+      </article>
+
+      <article class="finding-card">
+        <div class="finding-rank">04</div>
+        <div class="finding-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M4 19V10M10 19V5M16 19v-7M20 19V8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </div>
+        <span class="finding-tag finding-tag--medium">Medium review priority</span>
+        <h3>Kidney Cancer</h3>
+        <span class="finding-score">+0.15</span>
+        <p>A modest gap, but unusually consistent — it shows up across every burden component rather than being driven by one measure.</p>
+      </article>
+
+    </div>
+
+    <div class="findings-footnote">
+      <svg viewBox="0 0 24 24" fill="none" width="18" height="18" aria-hidden="true"><path d="M12 9v4m0 4h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+      <p>Lung Cancer and Pancreatic Cancer remain among the most burdensome cancer types studied in absolute terms. Their balanced-to-negative score here reflects measured research attention that is comparatively high relative to burden within this model — not lower clinical importance.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= RECOMMENDATIONS ================= -->
+<section class="recommendations" id="recommendations">
+  <div class="section-inner">
+    <span class="section-eyebrow">Recommendations</span>
+    <h2 class="section-title">What this means for decision-makers.</h2>
+
+    <div class="reco-grid">
+      <div class="reco-card">
+        <span class="reco-num">1</span>
+        <h3>Prioritize expert review for Brain Cancer &amp; Non-Hodgkin Lymphoma</h3>
+        <p>Review each with its own lens — Brain Cancer's gap is severity-driven, Non-Hodgkin Lymphoma's is consistent across every burden measure.</p>
+      </div>
+      <div class="reco-card">
+        <span class="reco-num">2</span>
+        <h3>Use Prostate &amp; Kidney Cancer as monitoring cases</h3>
+        <p>Track rather than escalate — Prostate Cancer's signal is volume-driven with strong survival; Kidney Cancer's is modest but steady.</p>
+      </div>
+      <div class="reco-card">
+        <span class="reco-num">3</span>
+        <h3>Treat the score as a starting point, not a verdict</h3>
+        <p>This framework directs limited review capacity toward the most uncertain cases. Final funding decisions still require clinical expertise and direct funding data.</p>
+      </div>
+    </div>
+
+    <div class="caution-banner">
+      <div class="caution-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 9v4m0 4h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+      </div>
+      <p><strong>Screening framework, not a funding directive.</strong> The Composite Attention Gap Score helps focus review capacity where burden-attention proportionality looks most uncertain. It does not establish that any cancer type is definitively underfunded and should not be used as a standalone basis for reallocating resources.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= VISUAL ANALYTICS ================= -->
+<section class="charts" id="charts">
+  <div class="section-inner">
+    <span class="section-eyebrow">Visual Analytics</span>
+    <h2 class="section-title">The evidence, chart by chart.</h2>
+    <p class="section-lede">Eight views of the same underlying dataset — from the headline ranking to the diagnostics that stress-test it.</p>
+
+    <div class="chart-grid">
+
+      <figure class="chart-card">
+        <div class="chart-img-wrap">
+          <img src="outputs/component_level_attention_gap_comparison.png" alt="Component-level attention gap comparison across cancer types" loading="lazy">
+        </div>
+        <figcaption>
+          <h3>Component-Level Attention Gap Comparison</h3>
+          <p class="chart-interp">Breaks the composite score into incidence-, mortality-, and survival-based gaps side by side for every cancer type.</p>
+          <p class="chart-takeaway"><span>Takeaway —</span> Brain Cancer's gap is concentrated in mortality and survival; Non-Hodgkin Lymphoma's holds up across all three.</p>
+        </figcaption>
+      </figure>
+
+      <figure class="chart-card">
+        <div class="chart-img-wrap">
+          <img src="outputs/02_component_level_attention_gaps.png" alt="Component-level attention gaps by cancer type, full sixteen-type view" loading="lazy">
+        </div>
+        <figcaption>
+          <h3>Component-Level Attention Gaps, Full View</h3>
+          <p class="chart-interp">The complete sixteen-cancer breakdown of incidence-, mortality-, and survival-based gaps, showing which burden dimension drives each signal.</p>
+          <p class="chart-takeaway"><span>Takeaway —</span> Positive gaps cluster in a small group of cancers; most of the field shows small, mixed-sign component gaps.</p>
+        </figcaption>
+      </figure>
+
+      <figure class="chart-card">
+        <div class="chart-img-wrap">
+          <img src="outputs/03_burden_vs_attention_scatter.png" alt="Scatter plot of burden score versus research attention score" loading="lazy">
+        </div>
+        <figcaption>
+          <h3>Burden Score vs. Research Attention Score</h3>
+          <p class="chart-interp">Every cancer type plotted by burden (x-axis) against research attention (y-axis), with a diagonal line marking perfect alignment.</p>
+          <p class="chart-takeaway"><span>Takeaway —</span> Brain Cancer and Non-Hodgkin Lymphoma sit furthest below the alignment line — higher burden than attention.</p>
+        </figcaption>
+      </figure>
+
+      <figure class="chart-card">
+        <div class="chart-img-wrap">
+          <img src="outputs/04_burden_rank_vs_attention_rank_dumbbell.png" alt="Dumbbell chart comparing burden rank to attention rank" loading="lazy">
+        </div>
+        <figcaption>
+          <h3>Burden Rank vs. Attention Rank</h3>
+          <p class="chart-interp">A dumbbell chart connecting each cancer type's burden rank to its attention rank among the sixteen types studied.</p>
+          <p class="chart-takeaway"><span>Takeaway —</span> Long red connectors mark the clearest rank reversals — burden ranked meaningfully higher than attention.</p>
+        </figcaption>
+      </figure>
+
+      <figure class="chart-card">
+        <div class="chart-img-wrap">
+          <img src="outputs/05_correlation_heatmap.png" alt="Correlation heatmap of burden and research attention variables" loading="lazy">
+        </div>
+        <figcaption>
+          <h3>Correlation Heatmap</h3>
+          <p class="chart-interp">Pairwise correlation across incidence, mortality, survival, trials, publications, and the composite scores — a sensitivity check on the model itself.</p>
+          <p class="chart-takeaway"><span>Takeaway —</span> Publications correlate strongly with incidence and mortality; trial counts correlate only weakly with mortality — supporting the use of both as complementary attention signals.</p>
+        </figcaption>
+      </figure>
+
+      <figure class="chart-card">
+        <div class="chart-img-wrap">
+          <img src="outputs/07_tfidf_terms_under_attended.png" alt="TF-IDF terms for the most under-attended cancer types" loading="lazy">
+        </div>
+        <figcaption>
+          <h3>TF-IDF Terms, Highest-Gap Cancers</h3>
+          <p class="chart-interp">Dominant terms from trial and publication text for the five cancer types with the largest Composite Attention Gap Scores.</p>
+          <p class="chart-takeaway"><span>Takeaway —</span> Describes the topical character of existing research — it does not evaluate research quality or funding adequacy.</p>
+        </figcaption>
+      </figure>
+
+      <figure class="chart-card">
+        <div class="chart-img-wrap">
+          <img src="outputs/08_silhouette_scores_by_k.png" alt="Silhouette scores by number of clusters k, used to select k for K-means" loading="lazy">
+        </div>
+        <figcaption>
+          <h3>Silhouette Scores by k</h3>
+          <p class="chart-interp">Cluster-quality diagnostic used to choose the number of clusters for the K-means corroborating analysis.</p>
+          <p class="chart-takeaway"><span>Takeaway —</span> Supports k = 3 as a reasonable, defensible choice rather than an arbitrary one.</p>
+        </figcaption>
+      </figure>
+
+      <figure class="chart-card">
+        <div class="chart-img-wrap">
+          <img src="outputs/13_advanced_dumbbell_rank_chart.png" alt="Advanced dumbbell rank chart, extended view" loading="lazy">
+        </div>
+        <figcaption>
+          <h3>Advanced Dumbbell Rank Chart</h3>
+          <p class="chart-interp">An extended rank-comparison view layering additional context onto the burden-versus-attention rank reversal pattern.</p>
+          <p class="chart-takeaway"><span>Takeaway —</span> Reinforces the same short list of review priorities from a second, independent angle.</p>
+        </figcaption>
+      </figure>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= SUPPORTING ANALYSES ================= -->
+<section class="supporting" id="supporting">
+  <div class="section-inner">
+    <span class="section-eyebrow section-eyebrow--light">Supporting Analyses</span>
+    <h2 class="section-title section-title--light">Four ways the score is stress-tested.</h2>
+
+    <div class="supporting-grid">
+      <div class="supporting-card">
+        <div class="supporting-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M4 19h4v-6H4v6Zm6 0h4V5h-4v14Zm6 0h4v-9h-4v9Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Component-Level Checks</h3>
+        <p>Decomposes the composite score into incidence-, mortality-, and survival-based gaps, clarifying whether a signal is volume-driven, severity-driven, or consistent across all three.</p>
+      </div>
+      <div class="supporting-card">
+        <div class="supporting-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="14" y="3" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="3" y="14" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="14" y="14" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.5"/></svg>
+        </div>
+        <h3>Correlation Heatmap</h3>
+        <p>Evaluates whether publications and trial counts capture complementary rather than duplicative dimensions of research attention, validating their joint inclusion in the score.</p>
+      </div>
+      <div class="supporting-card">
+        <div class="supporting-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="7" cy="7" r="3" stroke="currentColor" stroke-width="1.5"/><circle cx="17" cy="8" r="2.2" stroke="currentColor" stroke-width="1.5"/><circle cx="11" cy="17" r="2.6" stroke="currentColor" stroke-width="1.5"/></svg>
+        </div>
+        <h3>K-Means Clustering</h3>
+        <p>Groups cancer types by overall burden-attention profile as an independent corroborating method (k = 3). Supplementary — it contextualizes but never overrides the composite score.</p>
+      </div>
+      <div class="supporting-card">
+        <div class="supporting-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M4 4h16v4H4V4Zm0 6h10v4H4v-4Zm0 6h13v4H4v-4Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>TF-IDF Theme Exploration</h3>
+        <p>Applied to trial and publication text for the highest-gap cancer types, surfacing dominant research themes — describing topical character, not research quality or funding adequacy.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="site-footer">
+  <div class="section-inner footer-inner">
+    <div class="footer-brand">
+      <span class="nav-brand-mark" aria-hidden="true"></span>
+      <p>Mapping the Cancer Research Attention Gap</p>
+      <p class="footer-fine">A screening framework, not a funding directive. Columbia University · Applied Analytics Program · APANPS5205, Group 2.</p>
+    </div>
+    <div class="footer-links">
+      <div>
+        <h4>Sources</h4>
+        <ul>
+          <li>NCI SEER Cancer Stat Facts</li>
+          <li>ClinicalTrials.gov</li>
+          <li>PubMed / NCBI E-utilities</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Project</h4>
+        <ul>
+          <li><a href="#methodology">Methodology</a></li>
+          <li><a href="#findings">Key Findings</a></li>
+          <li><a href="#charts">Visual Analytics</a></li>
+          <li><a href="https://github.com/phoenixcoder26/cancer-research-attention-gap" target="_blank" rel="noopener">GitHub Repository ↗</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
