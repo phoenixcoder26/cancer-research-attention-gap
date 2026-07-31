@@ -1,13 +1,5 @@
 # Mapping the Cancer Research Attention Gap Using Unsupervised Learning
 
-<p align="center">
-  <b>Unsupervised Learning · Public Health Analytics · Research Funding Strategy · Text Analytics</b>
-</p>
-
-<p align="center">
-  <img src="outputs/component_level_attention_gap_comparison.png" width="850">
-</p>
-
 ## Project Overview
 
 This project analyzes whether cancer research attention is aligned with disease burden across sixteen major cancer types from 2019 to 2023.
